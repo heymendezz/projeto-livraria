@@ -126,3 +126,12 @@ body{
     width: 200px;
     text-align: center;
 }
+
+#cadastro-formulario{
+    font-family: 'Montserrat', sans-serif;
+}
+
+#cadastro{
+    display: flex;
+    justify-content: center;
+}
