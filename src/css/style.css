@@ -24,6 +24,11 @@ body{
     font-family: 'Montserrat', sans-serif;
 }   
 
+#best-sellers{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
 
 
 #title{
