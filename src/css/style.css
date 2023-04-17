@@ -24,6 +24,10 @@ body{
     font-family: 'Montserrat', sans-serif;
 }   
 
+#logomarca{
+    width: 320px;
+}
+
 #best-sellers{
     display: flex;
     align-items: center;
@@ -85,8 +89,13 @@ body{
     align-items: center;
     margin-left: 10px;
     color: #FFEBEB;
+    line-height: 10px;
 }
 
 #produtos-best-seller{
     display: flex;
+}
+
+.cadastro-texto{
+    margin: 0px;
 }
