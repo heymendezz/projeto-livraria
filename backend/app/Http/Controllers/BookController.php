@@ -2,18 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\Book;
 
 class BookController extends Controller
 {
-    public function test()
+    public function getAllBooks()
     {
-        $data = [
-            'name' => 'Some Random Book',
-            'publication_year' => 2002,
-            'price' => 59.99
-        ];
-
+        $data = Book::all();
         return response()->json($data);
+    }
+
+    public function getById($id)
+    {
+        $data = Book::find($id);
+
+        return (is_null($data))
+            ? response("", 404)
+            : response()->json($data);
     }
 }
