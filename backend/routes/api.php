@@ -19,5 +19,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-// Add "books" endpoint, map it to the "test" function in "BookController".
-Route::get('/books', [BookController::class, 'test']);
+// Add "book" endpoint, map it to the "test" function in "BookController".
+Route::get('/book', [BookController::class, 'test']);
