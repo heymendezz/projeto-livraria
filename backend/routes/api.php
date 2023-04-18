@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -19,5 +20,14 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-// Add "book" endpoint, map it to the "test" function in "BookController".
-Route::get('/book', [BookController::class, 'test']);
+// Add "user" endpoint, map it to the "getAllUsers" method in "UserController".
+Route::get('/user', [UserController::class, 'getAllUsers']);
+
+// Add "book" endpoint, map it to the "getAllBooks" method in "BookController".
+Route::get('/book', [BookController::class, 'getAllBooks']);
+
+// Add "book/{id}" endpoint, map it to the "getById" method in "BookController".
+Route::get('/book/{id}', [BookController::class, 'getById']);
+
+
+
