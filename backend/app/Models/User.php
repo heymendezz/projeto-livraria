@@ -21,8 +21,7 @@ class User extends Authenticatable
         'cpf',
         'email',
         'address',
-        'cep',
-        'permissions'
+        'cep'
     ];
 
     /**
