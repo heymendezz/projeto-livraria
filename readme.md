@@ -24,7 +24,7 @@ The development server will be made available at `http://localhost:8000`
 
 Endpoints will be available at `/api`. 
 
-For example, a `/book` endpoint will be available at `http://127.0.0.1:8000/api/books`
+For example, a `/book` endpoint will be available at `http://127.0.0.1:8000/api/book`
 
 ---
 
