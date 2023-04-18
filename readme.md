@@ -2,15 +2,19 @@
 
 Entry point is at [index.html](./index.html), open it with any browser of your choosing.
 
-## Running the backend server
+## Setting up the frontend
 
-Go into the `backend` folder.
+Navigate to the root folder of the project and execute the following command:
 
 ```
-cd backend
+npm install
 ```
 
-And execute the following command:
+This will download Bootstrap and any other Javascript dependency.
+
+## Setting up the backend
+
+Navigate to the `backend` folder of the project and execute the following command:
 
 ```
 php artisan serve
@@ -19,6 +23,7 @@ php artisan serve
 The development server will be made available at `http://localhost:8000`
 
 Endpoints will be available at `/api`. 
+
 For example, a `/book` endpoint will be available at `http://127.0.0.1:8000/api/books`
 
 ---
