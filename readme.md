@@ -17,6 +17,14 @@ This will download Bootstrap and any other Javascript dependency.
 Navigate to the `backend` folder of the project and execute the following command:
 
 ```
+composer install
+```
+
+This will download all PHP and Laravel dependencies.
+
+Then run the server with the following command:
+
+```
 php artisan serve
 ```
 
