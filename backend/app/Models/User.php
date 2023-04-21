@@ -12,6 +12,13 @@ class User extends Authenticatable
     use HasApiTokens, HasFactory;
 
     /**
+     * Remove the "created_at" and "updated_at" columns
+     * from this database model.
+     * @var bool
+     */
+    public $timestamps = false;
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
@@ -39,5 +46,13 @@ class User extends Authenticatable
     public function setPassword($value)
     {
         $this->attributes['password_hash'] = bcrypt($value);
+    }
+
+    /**
+     * Sets the permission level for this user.
+     */
+    public function setPermissions($value)
+    {
+        $this->attributes['permissions'] = $value;
     }
 }
