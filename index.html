@@ -56,52 +56,25 @@
                     <img src="src/img/livros/livro_codigo_limpo.png" alt="livro" class="livro-catalogo">
                     <div id="best-seller-info">
                         <h2 class="titulo-livro">Codigo Limpo</h2>
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                            data-bs-target="#exampleModal" onclick="getLivroById(2)">Descrição</button>
+                        <p class="autor-livro">Robert C. Martin</p>
                         <p>R$49,99</p>
+                        <button type="button" class="button-primary" data-bs-toggle="modal"
+                            data-bs-target="#exampleModal" onclick="getLivroById(2)">Comprar
+                        </button><br>
                     </div>
                 </div>
                 <div id="card-livro">
                     <img src="src/img/livros/livro_entendendo_algoritimos.png" alt="livro" class="livro-catalogo">
                     <div id="best-seller-info">
                         <h2 class="titulo-livro">Entendendo Algoritimos</h2>
-                        <button id="idButton" type="button" class="btn btn-primary" data-bs-toggle="modal"
-                            data-bs-target="#exampleModal">Descrição</button>
+                        <p class="autor-livro">Robert C. Martin</p>
                         <p>R$49,99</p>
+                        <button id="idButton" type="button" class="button-primary" data-bs-toggle="modal"
+                            data-bs-target="#exampleModal">Comprar</button>
+                        
                     </div>
                 </div>
-                <div id="card-livro">
-                    <img src="src/img/livros/livro_redes_e_computadores.png" alt="livro" class="livro-catalogo">
-                    <div id="best-seller-info">
-                        <h2 class="titulo-livro">Redes e Computadores</h2>
-                        <p>R$49,99</p>
-                    </div>
-                </div>
-                <div id="card-livro">
-                    <img src="src/img/livros/Livro_A_Guerra_dos_Tronos_As_Crônicas_de_Gelo_e_Fogo_volume_1.png"
-                        alt="livro" class="livro-catalogo">
-                    <div id="best-seller-info">
-                        <h2 class="titulo-livro">A Guerra dos Tronos - VOL 1</h2>
-                        <p>R$49,99</p>
-                    </div>
-                </div>
-                <div id="card-livro">
-                    <img src="src/img/livros/Livro_A_Guerra_dos_Tronos_As_Crônicas_de_Gelo_e_Fogo_volume_2.png"
-                        alt="livro" class="livro-catalogo">
-                    <div id="best-seller-info">
-                        <h2 class="titulo-livro">A Guerra dos Tronos - VOL 2</h2>
-                        <p>R$49,99</p>
-                    </div>
-                </div>
-                <div id="card-livro">
-                    <img src="src/img/livros/Livro_A_Guerra_dos_Tronos_As_Crônicas_de_Gelo_e_Fogo_volume_3.png"
-                        alt="livro" class="livro-catalogo">
-                    <div id="best-seller-info">
-                        <h2 class="titulo-livro">A Guerra dos Tronos - VOL 3</h2>
-                        <p>R$49,99</p>
-                    </div>
-                </div>
-            </div>
+                
 
             <!-- Modal -->
             <div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
@@ -110,17 +83,18 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <div id="exampleModalLabel">
-
+                                <h2 class="titulo-modal">Nome do livro</h2>
+                                <p class="autor-modal">Autor livro</p>
                             </div>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <div class="modal-body">
-                            <div id="exampleModalBody">
-                            </div>
+                        <div class="corpo-modal">
+                                <img src="src/img/livros/Livro_A_Guerra_dos_Tronos_As_Crônicas_de_Gelo_e_Fogo_volume_1.png" alt="teste livro" class="livro-modal">
+                                <p class="texto-modal">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec pretium hendrerit enim sit amet elementum. Aenean sit amet egestas erat. Proin eu orci velit. Aliquam quis dui sit amet nisi pellentesque volutpat dapibus ut nisi.</p>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-success">Buy</button>
+                            <button type="button" class="button-secondary" data-bs-dismiss="modal">Fechar</button>
+                            <button type="button" class="button-success">Adicionar ao carrinho</button>
                         </div>
                     </div>
                 </div>
