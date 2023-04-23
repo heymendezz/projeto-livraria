@@ -20,14 +20,17 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+/* User Endpoints */
+
 // Add "user" endpoint, map it to the "getAllUsers" method in "UserController".
-Route::get('/user', [UserController::class, 'getAllUsers']);
+// All endpoints work the same!
+Route::get('/user', [UserController::class, 'getByParams']);
+Route::post('/user', [UserController::class, 'createUser']);
+Route::put('/user/{id}', [UserController::class, 'updateUser']);
+Route::delete('/user/{id}', [UserController::class, 'deleteUser']);
 
-// Add "book" endpoint, map it to the "getAllBooks" method in "BookController".
-Route::get('/book', [BookController::class, 'getAllBooks']);
-
-// Add "book/{id}" endpoint, map it to the "getById" method in "BookController".
-Route::get('/book/{id}', [BookController::class, 'getById']);
-
-
-
+/* Book Endpoints */
+Route::get('/book', [BookController::class, 'getByParams']);
+Route::post('/book', [BookController::class, 'createBook']);
+Route::put('/book/{id}', [BookController::class, 'updateBook']);
+Route::delete('/book/{id}', [BookController::class, 'deleteBook']);

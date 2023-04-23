@@ -10,6 +10,13 @@ class Book extends Model
     use HasFactory;
 
     /**
+     * Remove the "created_at" and "updated_at" columns
+     * from this database model.
+     * @var bool
+     */
+    public $timestamps = false;
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>

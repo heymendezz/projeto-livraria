@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,19 +10,24 @@
     <link rel="stylesheet" href="src/css/style.css">
     <title>Livraria 021</title>
 </head>
+
 <body>
     <section id="container">
         <header id="menu">
-            <a href="index.html"><img src="src/img/logo_livraria_021.png" alt="Logomarca Livraria 021" id="logomarca"></a>
+            <a href="index.html"><img src="src/img/logo_livraria_021.png" alt="Logomarca Livraria 021"
+                    id="logomarca"></a>
             <form action="#" id="search">
-                <input type="text" placeholder="Busque aqui por título, autor ou editora." name="search" id="search-bar">
-                <button type="submit" id="search-button"><img src="src/img/icon/search-icon.png" id="search-icon"></button>
+                <input type="text" placeholder="Busque aqui por título, autor ou editora." name="search"
+                    id="search-bar">
+                <button type="submit" id="search-button"><img src="src/img/icon/search-icon.png"
+                        id="search-icon"></button>
             </form>
             <div id="login">
                 <img src="src/img/icon/login-icon.png" alt="Icone de Login do usuario" id="icon">
                 <div id="container-cadastro">
                     <p class="cadastro-texto">Olá, bem vindo(a)!</p><br>
-                    <p class="cadastro-texto"><a href="">Entre</a> ou <a href="src/pages/cadastro.html">Cadastre-se</a></p> <a href=""></a>
+                    <p class="cadastro-texto"><a href="">Entre</a> ou <a href="src/pages/cadastro.html">Cadastre-se</a>
+                    </p> <a href=""></a>
                 </div>
             </div>
             <a href=""><img src="src/img/icon/sacola-icon.png" alt="Simbolo carrinho de compras" id="icon"></a>
@@ -30,17 +36,17 @@
         <section id="carrousel-highlight">
             <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
-                  <div class="carousel-item active">
-                    <img src="src/img/banner_ads_1.png" class="d-block w-100" alt="...">
-                  </div>
-                  <div class="carousel-item">
-                    <img src="src/img/banner_ads_2.png" class="d-block w-100" alt="...">
-                  </div>
-                  <div class="carousel-item">
-                    <img src="src/img/banner_ads_3.png" class="d-block w-100" alt="...">
-                  </div>
+                    <div class="carousel-item active">
+                        <img src="src/img/banner_ads_1.png" class="d-block w-100" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="src/img/banner_ads_2.png" class="d-block w-100" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="src/img/banner_ads_3.png" class="d-block w-100" alt="...">
+                    </div>
                 </div>
-              </div>
+            </div>
         </section>
 
         <section id="best-sellers">
@@ -50,6 +56,8 @@
                     <img src="src/img/livros/livro_codigo_limpo.png" alt="livro" class="livro-catalogo">
                     <div id="best-seller-info">
                         <h2 class="titulo-livro">Codigo Limpo</h2>
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                            data-bs-target="#exampleModal" onclick="getLivroById(2)">Descrição</button>
                         <p>R$49,99</p>
                     </div>
                 </div>
@@ -57,6 +65,8 @@
                     <img src="src/img/livros/livro_entendendo_algoritimos.png" alt="livro" class="livro-catalogo">
                     <div id="best-seller-info">
                         <h2 class="titulo-livro">Entendendo Algoritimos</h2>
+                        <button id="idButton" type="button" class="btn btn-primary" data-bs-toggle="modal"
+                            data-bs-target="#exampleModal">Descrição</button>
                         <p>R$49,99</p>
                     </div>
                 </div>
@@ -68,29 +78,112 @@
                     </div>
                 </div>
                 <div id="card-livro">
-                    <img src="src/img/livros/Livro_A_Guerra_dos_Tronos_As_Crônicas_de_Gelo_e_Fogo_volume_1.png" alt="livro" class="livro-catalogo">
+                    <img src="src/img/livros/Livro_A_Guerra_dos_Tronos_As_Crônicas_de_Gelo_e_Fogo_volume_1.png"
+                        alt="livro" class="livro-catalogo">
                     <div id="best-seller-info">
                         <h2 class="titulo-livro">A Guerra dos Tronos - VOL 1</h2>
                         <p>R$49,99</p>
                     </div>
                 </div>
                 <div id="card-livro">
-                    <img src="src/img/livros/Livro_A_Guerra_dos_Tronos_As_Crônicas_de_Gelo_e_Fogo_volume_2.png" alt="livro" class="livro-catalogo">
+                    <img src="src/img/livros/Livro_A_Guerra_dos_Tronos_As_Crônicas_de_Gelo_e_Fogo_volume_2.png"
+                        alt="livro" class="livro-catalogo">
                     <div id="best-seller-info">
                         <h2 class="titulo-livro">A Guerra dos Tronos - VOL 2</h2>
                         <p>R$49,99</p>
                     </div>
                 </div>
                 <div id="card-livro">
-                    <img src="src/img/livros/Livro_A_Guerra_dos_Tronos_As_Crônicas_de_Gelo_e_Fogo_volume_3.png" alt="livro" class="livro-catalogo">
+                    <img src="src/img/livros/Livro_A_Guerra_dos_Tronos_As_Crônicas_de_Gelo_e_Fogo_volume_3.png"
+                        alt="livro" class="livro-catalogo">
                     <div id="best-seller-info">
                         <h2 class="titulo-livro">A Guerra dos Tronos - VOL 3</h2>
                         <p>R$49,99</p>
                     </div>
                 </div>
             </div>
+
+            <!-- Modal -->
+            <div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <div id="exampleModalLabel">
+
+                            </div>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div id="exampleModalBody">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-success">Buy</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </section>
     </section>
+
+
+
     <script src="node_modules/bootstrap/dist/js/bootstrap.js"></script>
+    <script>
+        //variavel da gambiarra
+        let removed = false;
+
+        async function getLivroById(id)
+        {
+            let modalHeader = document.getElementById("exampleModalLabel");
+            let modalBody = document.getElementById("exampleModalBody");
+
+            //GAMBIARRA porque js puro é um lixo
+            if (removed === true)
+            {
+                modalHeader.removeChild(modalHeader.lastElementChild);
+                modalBody.removeChild(modalBody.lastElementChild);
+            }
+
+            const baseUrl = 'http://127.0.0.1:8000/api/book?id=';
+
+            let jsonResponse = await fetch(baseUrl + id, { method: "GET" })
+                .then(data => data.json());
+
+            //Criando o titulo
+            let elTitle = document.createElement('h5');
+            elTitle.setAttribute('id', 'my-id');
+            elTitle.classList.add('class', 'modal-title');
+            elTitle.textContent = jsonResponse.name;
+
+            //Criando o body
+            let elBodyPrice = document.createElement('label');
+            elBodyPrice.textContent = jsonResponse.price;
+
+            let elBodyAuthor = document.createElement('label');
+            elBodyAuthor.textContent = jsonResponse.author;
+
+            let elBodySinopse = document.createElement('label');
+
+            // Descrição do livro
+            elBodySinopse.textContent = JSON.stringify(jsonResponse, null, 2);
+
+
+            //jogando no html
+            modalHeader.appendChild(elTitle);
+            modalBody.appendChild(elBodyPrice);
+            modalBody.appendChild(elBodyAuthor);
+            modalBody.appendChild(elBodySinopse);
+
+            //Resetando a variavel de gambiarra
+            removed = true;
+
+            // Debug
+            console.log(jsonResponse);
+        }
+    </script>
 </body>
 </html>
