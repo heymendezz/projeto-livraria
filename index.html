@@ -71,10 +71,9 @@
                         <p>R$49,99</p>
                         <button id="idButton" type="button" class="button-primary" data-bs-toggle="modal"
                             data-bs-target="#exampleModal">Comprar</button>
-                        
                     </div>
                 </div>
-                
+            </div>
 
             <!-- Modal -->
             <div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
@@ -118,18 +117,27 @@
             </div>
             <p class="footer-subtitle">Livraria 021 - Todos os direitos reservados. Copyrights 2023</p>
             <a href="/src/pages/cadastro-livro.html">Cadastrar livro</a>
+            <button type="button" onclick="getAllLivros()">TESTE</button>
         </section>
     </section>
 
 
-
+    <script src="https://code.jquery.com/jquery-1.9.1.js"></script>
     <script src="node_modules/bootstrap/dist/js/bootstrap.js"></script>
     <script>
+
         //variavel da gambiarra
         let removed = false;
+    
+        function showModal(){
+            $("#exampleModal").modal('show')
+        }
 
         async function getLivroById(id)
         {
+            //Exibir o modal via js 
+            showModal();
+
             let modalHeader = document.getElementById("exampleModalLabel");
             let modalBody = document.getElementById("exampleModalBody");
 
@@ -140,10 +148,11 @@
                 modalBody.removeChild(modalBody.lastElementChild);
             }
 
+            //Pegando os dados do PHP
             const baseUrl = 'http://127.0.0.1:8000/api/book?id=';
 
             let jsonResponse = await fetch(baseUrl + id, { method: "GET" })
-                .then(data => data.json());
+               .then(data => data.json());
 
             //Criando o titulo
             let elTitle = document.createElement('h5');
@@ -163,7 +172,6 @@
             // Descrição do livro
             elBodySinopse.textContent = JSON.stringify(jsonResponse, null, 2);
 
-
             //jogando no html
             modalHeader.appendChild(elTitle);
             modalBody.appendChild(elBodyPrice);
@@ -175,6 +183,67 @@
 
             // Debug
             console.log(jsonResponse);
+        }
+
+        window.onload = function() {
+            getAllLivros();
+        };
+
+        async function getAllLivros(){
+
+            //HTML DIV
+            let divHeader = document.getElementById("produtos-best-seller");
+
+            //Pegando os dados do PHP
+            const baseUrl = 'http://127.0.0.1:8000/api/book';
+
+            let jsonResponse = await fetch(baseUrl, { method: "GET" })
+               .then(data => data.json());
+
+            jsonResponse.forEach(element => {
+
+                //Criando o body
+                let elDivCard = document.createElement('div');
+                elDivCard.setAttribute("id", "card-livro")
+
+                let elImgCard = document.createElement('img');
+                elImgCard.src = 'src/img/livros/' + element.image_url;
+                elImgCard.classList.add('class', 'livro-catalogo');
+
+                let elDivBestSeller = document.createElement('div');
+                elDivBestSeller.setAttribute("id", "best-seller-info")
+
+                let elTitle = document.createElement('h2');
+                elTitle.classList.add('class', 'titulo-livro');
+                elTitle.textContent = element.name;
+
+                let elAuthor = document.createElement('p');
+                elAuthor.classList.add('class', 'autor-livro');
+                elAuthor.textContent = element.author;
+
+
+                let elPrice = document.createElement('p');
+                elPrice.textContent = 'R$ ' + element.price;
+
+                let elButton = document.createElement('button');
+                elButton.classList.add('class', 'button-primary');
+                elButton.setAttribute("onClick", "getLivroById(" + element.id + ")");
+                elButton.textContent = 'Comprar';
+
+                // Descrição do livro
+                let elBodySinopse = document.createElement('label');
+                elBodySinopse.textContent = element.synopsis;
+
+                //jogando no html
+                elDivBestSeller.appendChild(elTitle)
+                elDivBestSeller.appendChild(elAuthor)
+                elDivBestSeller.appendChild(elPrice)
+                elDivBestSeller.appendChild(elButton)
+
+                elDivCard.appendChild(elImgCard)
+                elDivCard.appendChild(elDivBestSeller)
+                divHeader.appendChild(elDivCard)
+            });
         }
     </script>
 </body>
