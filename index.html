@@ -135,11 +135,8 @@
 
         async function getLivroById(id)
         {
-            console.log(id);
-
             //Exibir o modal via js 
             showModal();
-
 
             let modalHeader = document.getElementById("exampleModalLabel");
             let modalBody = document.getElementById("exampleModalBody");
@@ -152,12 +149,10 @@
             }
 
             //Pegando os dados do PHP
-            //const baseUrl = 'http://127.0.0.1:8000/api/book?id=';
+            const baseUrl = 'http://127.0.0.1:8000/api/book?id=';
 
-            //let jsonResponse = await fetch(baseUrl + id, { method: "GET" })
-            //    .then(data => data.json());
-
-            
+            let jsonResponse = await fetch(baseUrl + id, { method: "GET" })
+               .then(data => data.json());
 
             //Criando o titulo
             let elTitle = document.createElement('h5');
@@ -177,7 +172,6 @@
             // Descrição do livro
             elBodySinopse.textContent = JSON.stringify(jsonResponse, null, 2);
 
-
             //jogando no html
             modalHeader.appendChild(elTitle);
             modalBody.appendChild(elBodyPrice);
@@ -194,8 +188,6 @@
         window.onload = function() {
             getAllLivros();
         };
-
-        let id= 5 ;
 
         async function getAllLivros(){
 
@@ -237,6 +229,10 @@
                 elButton.classList.add('class', 'button-primary');
                 elButton.setAttribute("onClick", "getLivroById(" + element.id + ")");
                 elButton.textContent = 'Comprar';
+
+                // Descrição do livro
+                let elBodySinopse = document.createElement('label');
+                elBodySinopse.textContent = element.synopsis;
 
                 //jogando no html
                 elDivBestSeller.appendChild(elTitle)
