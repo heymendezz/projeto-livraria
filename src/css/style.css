@@ -36,7 +36,7 @@ body{
 }
 
 
-#titulo{
+.titulo{
     font-family: 'Montserrat', sans-serif;
     font-size: 30px;
 }
@@ -220,3 +220,9 @@ body{
 .texto-modal{
     width: 90%;
 }
+
+#cadastro-livro{
+    display: flex;
+    justify-content: center;
+}
+
