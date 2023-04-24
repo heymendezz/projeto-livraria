@@ -21,14 +21,44 @@
                 <img src="../img/icon/login-icon.png" alt="Icone de Login do usuario" id="icon">
                 <div id="container-cadastro">
                     <p class="cadastro-texto">Olá, bem vindo(a)!</p><br>
-                    <p class="cadastro-texto"><a href="">Entre</a> ou <a href="../pages/cadastro.html">Cadastre-se</a></p> <a href=""></a>
+                    <p class="cadastro-texto"><a href="/src/pages/cadastro.html">Entre ou Cadastre-se</a></p>
                 </div>
             </div>
             <a href=""><img src="../img/icon/sacola-icon.png" alt="Simbolo carrinho de compras" id="icon"></a>
         </header>
 
-        <section id="cadastro">
-            <h2 id="cadastro-formulario">Cadastrar-se</h2>
+        <section id="cadastro" class="login-form">
+                <h2>Efetue seu cadastro</h2>
+                <p class="aviso-login">Campos com * são obrigatorios</p>
+                <form class="formulario">
+                    <label for="fname">Nome *</label><br>
+                    <input type="text" id="nome" name="fname" class="input" required/><br>
+                    <label for="lname">Sobrenome *</label><br>
+                    <input type="nome" id="lname" name="lname" class="input" required/><br>
+                    <label for="birthday">Data de Nascimento *</label><br>
+                    <input type="date" id="aniversario" name="birthday" class="input-date" required/><br>
+                    <label for="email">Email *</label><br>
+                    <input type="email" id="email" name="email" class="input" required/><br>
+                    <label for="phone">Telefone</label><br>
+                    <input type="text" id="phone" name="phone" class="input"><br>
+                    <p>Endereço</p>
+                    <label for="cep">CEP</label><br>
+                    <input name="cep" id="cep" class="input"><br>
+                    <div id="erro"></div>
+                    <label class="campo__etiqueta" for="endereco">Endereço *</label><br>
+                    <input name="endereco" id="endereco" class="input" required /><br>
+                    <label class="campo__etiqueta" for="numero">Numero *</label><br>
+                    <input name="numero" id="numero" class="input" required /><br>
+                    <label class="campo__etiqueta" for="complemento">Complemento</label><br>
+                    <input name="complemento" id="complemento"  class="input" /><br>
+                    <label class="campo__etiqueta" for="bairro">Bairro *</label><br>
+                    <input name="bairro" id="bairro" class="input" required /><br>
+                    <label class="campo__etiqueta" for="cidade">Cidade *</label><br>
+                    <input name="cidade" id="cidade" class="input" required /><br>
+                    <label class="campo__etiqueta" for="estado">Estado *</label><br>
+                    <input name="estado" id="estado" class="input" required /><br>
+                    <input type="submit" value="Finalizar Cadastro">
+                </form>
         </section>
 
         <section id="footer">
