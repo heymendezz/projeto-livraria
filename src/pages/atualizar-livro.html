@@ -40,7 +40,7 @@
             <img src="/src/img/icon/login-icon.png" alt="Icone de Login do usuario" id="icon">
             <div id="container-cadastro">
                 <p class="cadastro-texto">Olá, bem vindo(a)!</p><br>
-                <p class="cadastro-texto"><a href="/src/pages/cadastro.html">Entre ou Cadastre-se</a></p>
+                <p class="cadastro-texto"><a href="">Entre</a> ou <a href="/src/pages/cadastro.html">Cadastre-se</a>
                 </p> <a href=""></a>
             </div>
         </div>
@@ -50,7 +50,7 @@
     <div class="container mb-4">
       <div class="row justify-content-center">
         <div class="col-md-6 mt-5">
-          <h2 class="text-center mb-3">Cadastre um Livro</h2>
+          <h2 class="text-center mb-3">Atualize o Livro</h2>
           <form>
             <div class="row mb-3">
                 <div class="col">
@@ -87,8 +87,8 @@
                 id="capaurl"
               />
             </div>
-            <button type="button" class="btn btn-success w-100" onclick="cadastrarLivro()">
-              Cadastrar
+            <button type="button" class="btn btn-success w-100" onclick="atualizarLivro()">
+              Atualizar
             </button>
           </form>
         </div>
@@ -122,8 +122,35 @@
       referrerpolicy="no-referrer"
     ></script>
     <script>
-        async function  cadastrarLivro(){
+
+        async function getElementById(){
+            const myKeysValues = window.location.search;
+            const urlSearchParams = new URLSearchParams(myKeysValues);
+            let id = urlSearchParams.get('id')
+
+
+            const baseUrl = 'http://127.0.0.1:8000/api/book?id=';
+
+            let jsonResponse = await fetch(baseUrl + id, { method: "GET" })
+              .then(data => data.json());
+
+            let book = jsonResponse[0];
+
+            document.getElementById("bookname").value = book.name;
+            document.getElementById("sinopse").value = book.synopsis;
+            document.getElementById("autor").value = book.author;
+            document.getElementById("capaurl").value = book.image_url;
+            document.getElementById("price").value = book.price;
+            document.getElementById("realese_date").value = book.release_date;
+        }
+
+        async function  atualizarLivro(){
             let validation = true;
+
+            //PARAMETRO DA URL
+            const myKeysValues = window.location.search;
+            const urlSearchParams = new URLSearchParams(myKeysValues);
+            let id = urlSearchParams.get('id')
 
             var bookname = document.getElementById("bookname");
             var sinopse = document.getElementById("sinopse");
@@ -135,7 +162,7 @@
               name: bookname.value,
               author: autor.value,
               image_url: (capaurl.value === "" ? null : capaurl.value),
-              release_date: release_date.value,
+              release_date: realese_date.value,
               price: parseFloat(price.value.replace(",", ".")),
               synopsis: (sinopse.value === "" ? null : sinopse.value)
             };
@@ -183,21 +210,28 @@
               capaurl.classList.remove("invalid")
         
             if(validation == true){
-                const baseUrl = 'http://127.0.0.1:8000/api/book';
+                const baseUrl = 'http://127.0.0.1:8000/api/book/' + id;
 
-                //criar um objeto book com os dados que chegaram
+
+                window.alert(JSON.stringify(request, null, 2));
+
+                //atualizar um objeto book com os dados que chegaram
                 let jsonResponse = await fetch(baseUrl,
                 {
-                  method: "POST",
+                  method: "PUT",
                   body: JSON.stringify(request),
                   headers: { "Content-Type": "application/json" }
                 })
                 .then(data => data.json());
 
                 window.alert(JSON.stringify(jsonResponse, null, 2));
-                window.location.href = "../../index.html";
+                window.location.href = "./admin-page.html";
             }
         }
+
+        window.onload = function() {
+            getElementById();
+        };
     </script>
   </body>
 </html>
