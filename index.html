@@ -117,7 +117,6 @@
             </div>
             <p class="footer-subtitle">Livraria 021 - Todos os direitos reservados. Copyrights 2023</p>
             <a href="/src/pages/cadastro-livro.html">Cadastrar livro</a>
-            <button type="button" onclick="getAllLivros()">TESTE</button>
         </section>
     </section>
 
@@ -207,7 +206,7 @@
                 elDivCard.setAttribute("id", "card-livro")
 
                 let elImgCard = document.createElement('img');
-                elImgCard.src = 'src/img/livros/' + element.image_url;
+                elImgCard.src = element.image_url;
                 elImgCard.classList.add('class', 'livro-catalogo');
 
                 let elDivBestSeller = document.createElement('div');

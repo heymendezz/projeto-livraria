@@ -1,72 +1,188 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registration Form</title>
 
-<head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/src/css/reset.css">
     <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.css">
     <link rel="stylesheet" href="/src/css/style.css">
-    <title>Livraria 021</title>
-</head>
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.0/css/bootstrap.min.css"
+      integrity="sha512-ZqqT+iX9y9aOfN87pNkY+ohZwC8J31d/4Qq3Mqn7FTl+XlW9A1rQqEZuJ7VUv8xWxG6RiNS6uBzGkOyP5b7Jvw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <style>
+        .invalid {
+        border: 2px dashed red;
+        }
+    </style>
+  </head>
+  <body>
 
-<body>
-    <section id="container">
-        <header id="menu">
-            <a href="/index.html"><img src="/src/img/logo_livraria_021.png" alt="Logomarca Livraria 021"
-                    id="logomarca"></a>
-            <form action="#" id="search">
-                <input type="text" placeholder="Busque aqui por título, autor ou editora." name="search"
-                    id="search-bar">
-                <button type="submit" id="search-button"><img src="/src/img/icon/search-icon.png"
-                        id="search-icon"></button>
-            </form>
-            <div id="login">
-                <img src="/src/img/icon/login-icon.png" alt="Icone de Login do usuario" id="icon">
-                <div id="container-cadastro">
-                    <p class="cadastro-texto">Olá, bem vindo(a)!</p><br>
-                    <p class="cadastro-texto"><a href="">Entre</a> ou <a href="/src/pages/cadastro.html">Cadastre-se</a>
-                    </p> <a href=""></a>
+    <header id="menu">
+        <a href="/index.html"><img src="/src/img/logo_livraria_021.png" alt="Logomarca Livraria 021"
+                id="logomarca"></a>
+        <form action="#" id="search">
+            <input type="text" placeholder="Busque aqui por título, autor ou editora." name="search"
+                id="search-bar">
+            <button type="submit" id="search-button"><img src="/src/img/icon/search-icon.png"
+                    id="search-icon"></button>
+        </form>
+        <div id="login">
+            <img src="/src/img/icon/login-icon.png" alt="Icone de Login do usuario" id="icon">
+            <div id="container-cadastro">
+                <p class="cadastro-texto">Olá, bem vindo(a)!</p><br>
+                <p class="cadastro-texto"><a href="">Entre</a> ou <a href="/src/pages/cadastro.html">Cadastre-se</a>
+                </p> <a href=""></a>
+            </div>
+        </div>
+        <a href=""><img src="/src/img/icon/sacola-icon.png" alt="Simbolo carrinho de compras" id="icon"></a>
+    </header>
+
+    <div class="container mb-4">
+      <div class="row justify-content-center">
+        <div class="col-md-6 mt-5">
+          <h2 class="text-center mb-3">Cadastre um Livro</h2>
+          <form>
+            <div class="row mb-3">
+                <div class="col">
+                    <label for="name" class="form-label">Nome do Livro:</label>
+                    <input type="text" class="form-control" id="bookname" />
                 </div>
+                <div class="col">
+                    <label for="autor" class="form-label">Autor</label>
+                    <input type="text" class="form-control" id="autor" />
+                  </div>
             </div>
-            <a href=""><img src="/src/img/icon/sacola-icon.png" alt="Simbolo carrinho de compras" id="icon"></a>
-        </header>
 
-        <section id="cadastro-livro">
-            <h2 class="titulo">Cadastrar novo livro</h2>
-
-            <form action="#">
-                <label for="bookname">Nome do livro:</label><br>
-                <input type="text" id="bookname" name="bookname"><br>
-                <label for="autor">Autor</label><br>
-                <input type="text" id="autor" name="autor"><br>
-                <label for="capaurl">URL da Capa do livro:</label><br>
-                <input type="text" id="capaurl" name="capaurl"><br>
-                <label for="release_date">Data de lancamento:</label><br>
-                <input type="date" id="release_date" name="release_date"><br>
-                <label for="price">Valor de venda:</label><br>
-                <input type="text" id="price" name="price"><br>
-                <button type="submit" class="button-primary">Finalizar Cadastro</button>
-            </form>
-        </section>
-
-        <section id="footer">
-            <h2 class="footer-title">Redes Sociais</h2>
-            <div>
-                <img src="/src/img/icon/social/facebook-icon.png" alt="Facebook Icon" class="icon-footer">
-                <img src="/src/img/icon/social/instagram-icon.png" alt="Instagram Icon" class="icon-footer">
-                <img src="/src/img/icon/social/twitter-icon.png" alt="Twitter Icon" class="icon-footer">
+            <div class="mb-3">
+              <label for="sinopse" class="form-label">Sinopse</label>
+              <input type="text" class="form-control" id="sinopse" />
             </div>
-            <h2 class="footer-title">Formas De Pagamento</h2>
-            <div>
-                <img src="/src/img/icon/payment/mastercard-icon.png" alt="Simbolo Mastercard" class="icon-footer">
-                <img src="/src/img/icon/payment/visa-icon.png" alt="Simbolo Visa" class="icon-footer">
-                <img src="/src/img/icon/payment/paypal-icon.png" alt="Simbolo Paypal" class="icon-footer">
-                <img src="/src/img/icon/payment/amex-icon.png" alt="Simbolo Amex" class="icon-footer">
+            <div class="mb-3">
+                <label for="price" class="form-label">Preço:</label>
+                <input type="number" class="form-control" id="price" />
+              </div>
+            <div class="mb-3">
+              <label for="text" class="form-label"
+                >URL da Capa do livro:</label
+              >
+              <input
+                type="text"
+                class="form-control"
+                id="capaurl"
+              />
             </div>
-            <p class="footer-subtitle">Livraria 021 - Todos os direitos reservados. Copyrights 2023</p>
-        </section>
+            <button type="button" class="btn btn-success w-100" onclick="cadastrarLivro()">
+              Cadastrar
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+
+
+    <section id="footer">
+        <h2 class="footer-title">Redes Sociais</h2>
+        <div>
+            <img src="/src/img/icon/social/facebook-icon.png" alt="Facebook Icon" class="icon-footer">
+            <img src="/src/img/icon/social/instagram-icon.png" alt="Instagram Icon" class="icon-footer">
+            <img src="/src/img/icon/social/twitter-icon.png" alt="Twitter Icon" class="icon-footer">
+        </div>
+        <h2 class="footer-title">Formas De Pagamento</h2>
+        <div>
+            <img src="/src/img/icon/payment/mastercard-icon.png" alt="Simbolo Mastercard" class="icon-footer">
+            <img src="/src/img/icon/payment/visa-icon.png" alt="Simbolo Visa" class="icon-footer">
+            <img src="/src/img/icon/payment/paypal-icon.png" alt="Simbolo Paypal" class="icon-footer">
+            <img src="/src/img/icon/payment/amex-icon.png" alt="Simbolo Amex" class="icon-footer">
+        </div>
+        <p class="footer-subtitle">Livraria 021 - Todos os direitos reservados. Copyrights 2023</p>
     </section>
-</body>
+
+    <!-- Bootstrap JS -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.0/js/bootstrap.min.js"
+      integrity="sha512-cz5n5oE+HZZRkQnF1G0omvOgD/qiqLpFeqJK+v0M5Y5Z5KjOa9RQ2e5EjfjKQyIfZOxS/Y0wCtL+ze89Y03ZDg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script>
+
+        async function  cadastrarLivro(){
+            let validation = true;
+
+            var bookname = document.getElementById("bookname")
+            var sinopse = document.getElementById("sinopse")
+            var autor = document.getElementById("autor")
+            var capaurl = document.getElementById("capaurl")
+            var price = document.getElementById("price")
+
+
+
+            if(!bookname.value){
+                bookname.classList.add("invalid")
+                validation = false
+            }
+            else
+                bookname.classList.remove("invalid")
+
+
+            if(!sinopse.value){
+                sinopse.classList.add("invalid")
+                validation = false;
+            }
+            else
+                sinopse.classList.remove("invalid")
+                
+            if(!autor.value){
+                autor.classList.add("invalid")
+                validation = false;
+            }
+            else
+                autor.classList.remove("invalid")
+                
+            if(!capaurl.value){
+                capaurl.classList.add("invalid")
+                validation = false;
+            }
+            else
+                capaurl.classList.remove("invalid")
+                
+            if(!price.value){
+                price.classList.add("invalid")
+                validation = false;
+            }
+            else
+                price.classList.remove("invalid")
+            
+            
+
+
+            if(validation == true){
+                alert(validation);
+                const baseUrl = 'http://127.0.0.1:8000/api/book';
+
+                //criar um objeto book com os dados que chegaram ou mandar os parametros juntos ? TODO
+
+               // let jsonResponse = await fetch(baseUrl + book, { method: "POST" })
+               //.then(data => data.json());
+
+               window.location.href = "http://127.0.0.1:5502/index.html";
+            }
+
+        }
+
+
+
+    </script>
+  </body>
 </html>
