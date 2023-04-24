@@ -120,69 +120,65 @@
         async function  cadastrarLivro(){
             let validation = true;
 
-            var bookname = document.getElementById("bookname")
-            var sinopse = document.getElementById("sinopse")
-            var autor = document.getElementById("autor")
-            var capaurl = document.getElementById("capaurl")
-            var price = document.getElementById("price")
-
-
+            var bookname = document.getElementById("bookname");
+            var sinopse = document.getElementById("sinopse");
+            var autor = document.getElementById("autor");
+            var capaurl = document.getElementById("capaurl");
+            var price = document.getElementById("price");
+            let request = {
+              name: bookname.value,
+              author: autor.value,
+              image_url: (capaurl.value === "" ? null : capaurl.value),
+              release_date: "2001-11-01 00:00:00.000",
+              price: parseFloat(price.value.replace(",", ".")),
+              synopsis: (sinopse.value === "" ? null : sinopse.value)
+            };
 
             if(!bookname.value){
-                bookname.classList.add("invalid")
+                bookname.classList.add("invalid");
                 validation = false
             }
             else
-                bookname.classList.remove("invalid")
-
+                bookname.classList.remove("invalid");
 
             if(!sinopse.value){
-                sinopse.classList.add("invalid")
+                sinopse.classList.add("invalid");
                 validation = false;
             }
             else
-                sinopse.classList.remove("invalid")
+                sinopse.classList.remove("invalid");
                 
             if(!autor.value){
-                autor.classList.add("invalid")
+                autor.classList.add("invalid");
                 validation = false;
             }
             else
-                autor.classList.remove("invalid")
-                
-            if(!capaurl.value){
-                capaurl.classList.add("invalid")
-                validation = false;
-            }
-            else
-                capaurl.classList.remove("invalid")
+                autor.classList.remove("invalid");
                 
             if(!price.value){
-                price.classList.add("invalid")
+                price.classList.add("invalid");
                 validation = false;
             }
             else
-                price.classList.remove("invalid")
-            
-            
-
-
+                price.classList.remove("invalid");
+        
             if(validation == true){
-                alert(validation);
                 const baseUrl = 'http://127.0.0.1:8000/api/book';
 
-                //criar um objeto book com os dados que chegaram ou mandar os parametros juntos ? TODO
+                //criar um objeto book com os dados que chegaram
+                let jsonResponse = await fetch(baseUrl,
+                {
+                  method: "POST",
+                  body: JSON.stringify(request, null, 2),
+                  headers: { "Content-Type": "application/json", }
+                })
+                .then(data => data.json());
 
-               // let jsonResponse = await fetch(baseUrl + book, { method: "POST" })
-               //.then(data => data.json());
-
-               window.location.href = "http://127.0.0.1:5502/index.html";
+                window.alert(JSON.stringify(jsonResponse, null, 2));
+                window.location.href = "../../index.html";
             }
 
         }
-
-
-
     </script>
   </body>
 </html>
