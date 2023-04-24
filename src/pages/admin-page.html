@@ -1,3 +1,6 @@
+
+ 
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -8,6 +11,11 @@
     <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.css">
     <link rel="stylesheet" href="../css/style.css">
     <title>Livraria 021</title>
+    <style>
+        body{
+            background-color: white;
+        }
+    </style>
 </head>
 <body>
     <section id="container">
@@ -27,29 +35,148 @@
             <a href=""><img src="../img/icon/sacola-icon.png" alt="Simbolo carrinho de compras" id="icon"></a>
         </header>
 
-        <section id="cadastro">
+        <section id="cadastro" class="mb-4">
             <h2 id="cadastro-formulario">Pagina de adminstração</h2>
         </section>
+        <table id="myTable" class="table table-borderless table-striped table-earning">
+            <thead>
+              <tr>
+                <th></th>
+                <th>nome</th>
+                <th>autor</th>
+                <th>preço</th>
+              </tr>
+            </thead>
+            <tbody id="testBody">
+
+            </tbody>
+          </table>
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
+    Launch modal
+  </button>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="modal-form">
+           
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
         <section id="footer">
             <h2 class="footer-title">Redes Sociais</h2>
             <div>
-                <img src="src/img/icon/social/facebook-icon.png" alt="Facebook Icon" class="icon-footer">
-                <img src="src/img/icon/social/instagram-icon.png" alt="Instagram Icon" class="icon-footer">
-                <img src="src/img/icon/social/twitter-icon.png" alt="Twitter Icon" class="icon-footer">
+                <img src="../img/icon/social/facebook-icon.png" alt="Facebook Icon" class="icon-footer">
+                <img src="../img/icon/social/instagram-icon.png" alt="Instagram Icon" class="icon-footer">
+                <img src="../img/icon/social/twitter-icon.png" alt="Twitter Icon" class="icon-footer">
             </div>
             <h2 class="footer-title">Formas De Pagamento</h2>
             <div>
-                <img src="src/img/icon/payment/mastercard-icon.png" alt="Simbolo Mastercard" class="icon-footer">
-                <img src="src/img/icon/payment/visa-icon.png" alt="Simbolo Visa" class="icon-footer">
-                <img src="src/img/icon/payment/paypal-icon.png" alt="Simbolo Paypal" class="icon-footer">
-                <img src="src/img/icon/payment/amex-icon.png" alt="Simbolo Amex" class="icon-footer">
+                <img src="../img/icon/payment/mastercard-icon.png" alt="Simbolo Mastercard" class="icon-footer">
+                <img src="../img/icon/payment/visa-icon.png" alt="Simbolo Visa" class="icon-footer">
+                <img src="../img/icon/payment/paypal-icon.png" alt="Simbolo Paypal" class="icon-footer">
+                <img src="../img/icon/payment/amex-icon.png" alt="Simbolo Amex" class="icon-footer">
             </div>
             <p class="footer-subtitle">Livraria 021 - Todos os direitos reservados. Copyrights 2023</p>
             <a href="./admin-page.html"><img src="../img/icon/admin-icon.png" alt="Admin Panel" class="icon-footer"></a>
         </section>
 
+        <button type="button" onclick="updateLivro()">teste</button>
+
     </section>
     <script src="../../node_modules/bootstrap/dist/js/bootstrap.js"></script>
+    <script>
+
+        async function deletarLivro(id){
+
+            const baseUrl = 'http://127.0.0.1:8000/api/book?id=';
+
+            let jsonResponse = await fetch(baseUrl + id, { method: "DELETE" })
+               .then(data => data.json());
+
+               window.location.href = "admin-page.html";
+
+        }
+
+        function updateLivro(id){
+            window.location.href = "atualizar-livro.html?id=" + id;
+        }
+
+
+        async function getAllLivros(){
+             //HTML DIV
+             let divHeader = document.getElementById("produtos-best-seller");
+
+            //Pegando os dados do PHP
+            const baseUrl = 'http://127.0.0.1:8000/api/book';
+
+            //let jsonResponse = await fetch(baseUrl, { method: "GET" })
+            //.then(data => data.json());
+
+            //JSON
+            const items1 = [
+            { id: "1", name: "john", autor : "Teste", price: 50 },
+            { id: "2", name: "doe", autor: "Outro", price: 50 },
+            ];
+
+            const table = document.getElementById("testBody");
+            items1.forEach( item => {
+            let row = table.insertRow();
+            let id = row.insertCell(0);
+            id.innerHTML = item.id;
+            let name = row.insertCell(1);
+            name.innerHTML = item.name;
+            let autor = row.insertCell(2);
+            autor.innerHTML = item.autor;
+            let price = row.insertCell(3);
+            price.innerHTML = item.price;
+
+
+
+            let updateButton = document.createElement('button');
+            updateButton.classList.add('class', 'btn');
+            updateButton.classList.add('class', 'btn-primary');
+            updateButton.classList.add('class', 'row');
+            updateButton.classList.add('class', 'm-4');
+            updateButton.setAttribute("onClick", "updateLivro(" + item.id + ")");
+            updateButton.textContent = 'Atualizar';
+
+            let deleteButton = document.createElement('button');
+            deleteButton.classList.add('class', 'btn');
+            deleteButton.classList.add('class', 'btn-danger');
+            deleteButton.classList.add('class', 'row');
+            deleteButton.setAttribute("onClick", "deletarLivro(" + item.id + ")");
+            deleteButton.textContent = 'Deletar';
+            let cellButtonDelete = row.insertCell(4);
+            cellButtonDelete.appendChild(updateButton);
+            cellButtonDelete.appendChild(deleteButton);
+
+            })
+        }
+
+
+       
+    
+        window.onload = function() {
+            getAllLivros();
+        };
+
+
+
+    </script>
 </body>
 </html>
