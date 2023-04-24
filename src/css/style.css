@@ -253,12 +253,17 @@ body{
     padding: 30px;
 }
 
+.form-title{
+    font-family: 'Montserrat', sans-serif;
+}
+
 .formulario{
     display: flex;
     padding: 10px;
     align-items: flex-start;
     flex-direction: column;
     text-align: center;
+    font-family: 'Inter', sans-serif;
 }
 
 .endereco, .usuario{
@@ -267,6 +272,8 @@ body{
 
 .input{
     width: 300px;
+    border-radius: 8px;
+    border: none;
 }
 
 .aviso-login{
