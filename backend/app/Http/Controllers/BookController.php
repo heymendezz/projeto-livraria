@@ -27,6 +27,9 @@ class BookController extends Controller
 
         if ($request->has('price'))
             $query->where('price', $request->input('price'));
+
+        if ($request->has('synopsis'))
+            $query->where('synopsis', 'LIKE', '%' . $request->input('synopsis') . '%');
         
         $data = $query->get();
 
@@ -43,6 +46,7 @@ class BookController extends Controller
             'image_url' => $request->input('image_url'),
             'release_date' => $request->input('release_date'),
             'price' => $request->input('price'),
+            'synopsis' => $request->input('synopsis')
         ]);
 
         $book->save();
@@ -62,6 +66,7 @@ class BookController extends Controller
         $book->image_url = $request->input('image_url');
         $book->release_date = $request->input('release_date');
         $book->price = $request->input('price');
+        $book->synopsis = $request->input('synopsis');
 
         $book->save();
 
