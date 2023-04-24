@@ -35,6 +35,12 @@ body{
     flex-direction: column;
 }
 
+#produtos-best-seller{
+    display: inline-grid;
+    grid-template-columns: repeat(6, 1fr);
+    
+}
+
 
 .titulo{
     font-family: 'Montserrat', sans-serif;
@@ -90,10 +96,6 @@ body{
     margin-left: 10px;
     color: #FFEBEB;
     line-height: 10px;
-}
-
-#produtos-best-seller{
-    display: flex;
 }
 
 .cadastro-texto{
