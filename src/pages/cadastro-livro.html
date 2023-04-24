@@ -67,10 +67,16 @@
               <label for="sinopse" class="form-label">Sinopse</label>
               <input type="text" class="form-control" id="sinopse" />
             </div>
-            <div class="mb-3">
+            <div class="row mb-3">
+              <div class="col">
                 <label for="price" class="form-label">Preço:</label>
                 <input type="number" class="form-control" id="price" />
-              </div>
+            </div>
+            <div class="col">
+                <label for="autor" class="form-label">Data de lançamento</label>
+                <input type="date" class="form-control" id="realese_date" />
+            </div>
+            </div>
             <div class="mb-3">
               <label for="text" class="form-label"
                 >URL da Capa do livro:</label
@@ -124,6 +130,7 @@
             var autor = document.getElementById("autor");
             var capaurl = document.getElementById("capaurl");
             var price = document.getElementById("price");
+            var realese_date = document.getElementById("realese_date")
             let request = {
               name: bookname.value,
               author: autor.value,
@@ -146,6 +153,13 @@
             }
             else
                 autor.classList.remove("invalid");
+
+            if(!sinopse.value){
+                sinopse.classList.add("invalid");
+                validation = false;
+            }
+            else
+              sinopse.classList.remove("invalid");
                 
             if(!price.value){
                 price.classList.add("invalid");
@@ -153,6 +167,20 @@
             }
             else
                 price.classList.remove("invalid");
+
+            if(!realese_date.value){
+                realese_date.classList.add("invalid")
+                validation = false;
+            }
+            else
+                realese_date.classList.remove("invalid")
+            
+            if(!capaurl.value){
+                capaurl.classList.add("invalid")
+                validation = false;
+            }
+            else
+              capaurl.classList.remove("invalid")
         
             if(validation == true){
                 const baseUrl = 'http://127.0.0.1:8000/api/book';
