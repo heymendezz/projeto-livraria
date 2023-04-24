@@ -129,17 +129,19 @@
             let id = urlSearchParams.get('id')
 
 
-            //const baseUrl = 'http://127.0.0.1:8000/api/book?id=';
+            const baseUrl = 'http://127.0.0.1:8000/api/book?id=';
 
-            //let jsonResponse = await fetch(baseUrl + id, { method: "GET" })
-            //.then(data => data.json());
+            let jsonResponse = await fetch(baseUrl + id, { method: "GET" })
+              .then(data => data.json());
 
-            document.getElementById("bookname").value = jsonResponse.name;
-            document.getElementById("sinopse") = jsonResponse.sinopse;
-            document.getElementById("autor") = jsonResponse.author;
-            document.getElementById("capaurl") = jsonResponse.image_url;
-            document.getElementById("price") = jsonResponse.price;
-            document.getElementById("realese_date") = jsonResponse.release_date;
+            let book = jsonResponse[0];
+
+            document.getElementById("bookname").value = book.name;
+            document.getElementById("sinopse").value = book.synopsis;
+            document.getElementById("autor").value = book.author;
+            document.getElementById("capaurl").value = book.image_url;
+            document.getElementById("price").value = book.price;
+            document.getElementById("realese_date").value = book.release_date;
         }
 
         async function  atualizarLivro(){
@@ -160,7 +162,7 @@
               name: bookname.value,
               author: autor.value,
               image_url: (capaurl.value === "" ? null : capaurl.value),
-              release_date: "2001-11-01 00:00:00.000",
+              release_date: realese_date.value,
               price: parseFloat(price.value.replace(",", ".")),
               synopsis: (sinopse.value === "" ? null : sinopse.value)
             };
@@ -208,19 +210,22 @@
               capaurl.classList.remove("invalid")
         
             if(validation == true){
-                const baseUrl = 'http://127.0.0.1:8000/api/book';
+                const baseUrl = 'http://127.0.0.1:8000/api/book/' + id;
 
-                //criar um objeto book com os dados que chegaram
+
+                window.alert(JSON.stringify(request, null, 2));
+
+                //atualizar um objeto book com os dados que chegaram
                 let jsonResponse = await fetch(baseUrl,
                 {
                   method: "PUT",
                   body: JSON.stringify(request),
-                  headers: { "Content-Type": "application/json", }
+                  headers: { "Content-Type": "application/json" }
                 })
                 .then(data => data.json());
 
                 window.alert(JSON.stringify(jsonResponse, null, 2));
-                window.location.href = "../../admin-page.html";
+                window.location.href = "./admin-page.html";
             }
         }
 

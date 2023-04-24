@@ -103,12 +103,17 @@
 
         async function deletarLivro(id){
 
-            const baseUrl = 'http://127.0.0.1:8000/api/book?id=';
+            const baseUrl = 'http://127.0.0.1:8000/api/book/' + id;
 
-            let jsonResponse = await fetch(baseUrl + id, { method: "DELETE" })
-               .then(data => data.json());
+            let jsonResponse = await fetch(baseUrl,
+            {
+                method: "DELETE",
+                body: JSON.stringify(request),
+                headers: { "Content-Type": "application/json" }
+            })
+            .then(data => data.json());
 
-               window.location.href = "admin-page.html";
+            window.location.href = "./admin-page.html";
 
         }
 
@@ -124,47 +129,38 @@
             //Pegando os dados do PHP
             const baseUrl = 'http://127.0.0.1:8000/api/book';
 
-            //let jsonResponse = await fetch(baseUrl, { method: "GET" })
-            //.then(data => data.json());
-
-            //JSON
-            const items1 = [
-            { id: "1", name: "john", autor : "Teste", price: 50 },
-            { id: "2", name: "doe", autor: "Outro", price: 50 },
-            ];
+            let jsonResponse = await fetch(baseUrl, { method: "GET" })
+                .then(data => data.json());
 
             const table = document.getElementById("testBody");
-            items1.forEach( item => {
-            let row = table.insertRow();
-            let id = row.insertCell(0);
-            id.innerHTML = item.id;
-            let name = row.insertCell(1);
-            name.innerHTML = item.name;
-            let autor = row.insertCell(2);
-            autor.innerHTML = item.autor;
-            let price = row.insertCell(3);
-            price.innerHTML = item.price;
+                jsonResponse.forEach( item => {
+                let row = table.insertRow();
+                let id = row.insertCell(0);
+                id.innerHTML = item.id;
+                let name = row.insertCell(1);
+                name.innerHTML = item.name;
+                let autor = row.insertCell(2);
+                autor.innerHTML = item.autor;
+                let price = row.insertCell(3);
+                price.innerHTML = item.price;
 
+                let updateButton = document.createElement('button');
+                updateButton.classList.add('class', 'btn');
+                updateButton.classList.add('class', 'btn-primary');
+                updateButton.classList.add('class', 'row');
+                updateButton.classList.add('class', 'm-4');
+                updateButton.setAttribute("onClick", "updateLivro(" + item.id + ")");
+                updateButton.textContent = 'Atualizar';
 
-
-            let updateButton = document.createElement('button');
-            updateButton.classList.add('class', 'btn');
-            updateButton.classList.add('class', 'btn-primary');
-            updateButton.classList.add('class', 'row');
-            updateButton.classList.add('class', 'm-4');
-            updateButton.setAttribute("onClick", "updateLivro(" + item.id + ")");
-            updateButton.textContent = 'Atualizar';
-
-            let deleteButton = document.createElement('button');
-            deleteButton.classList.add('class', 'btn');
-            deleteButton.classList.add('class', 'btn-danger');
-            deleteButton.classList.add('class', 'row');
-            deleteButton.setAttribute("onClick", "deletarLivro(" + item.id + ")");
-            deleteButton.textContent = 'Deletar';
-            let cellButtonDelete = row.insertCell(4);
-            cellButtonDelete.appendChild(updateButton);
-            cellButtonDelete.appendChild(deleteButton);
-
+                let deleteButton = document.createElement('button');
+                deleteButton.classList.add('class', 'btn');
+                deleteButton.classList.add('class', 'btn-danger');
+                deleteButton.classList.add('class', 'row');
+                deleteButton.setAttribute("onClick", "deletarLivro(" + item.id + ")");
+                deleteButton.textContent = 'Deletar';
+                let cellButtonDelete = row.insertCell(4);
+                cellButtonDelete.appendChild(updateButton);
+                cellButtonDelete.appendChild(deleteButton);
             })
         }
 
